@@ -8,7 +8,7 @@ const Leftside = (props) => {
           <CardBackground />
           <a>
             <Photo />
-            <Link>Welcome, there!</Link>
+            <Link>Welcome, there</Link>
           </a>
           <a>
             <AddPhotoText>Add a photo</AddPhotoText>

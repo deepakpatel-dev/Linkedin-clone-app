@@ -1,12 +1,17 @@
 import React from 'react'
 import styled from "styled-components";
+import { connect } from 'react-redux';
 
 const Main = (props) => {
     return <Container>
                     <SharedBox>
                         Share
                     <div>
-                        <img src="./images/user.svg" alt="" />
+                    { props.user && props.user.photoURL ? (
+                                  <img src={props.user.photoURL} alt="" />):(
+                                    <img src="./images/user.svg" alt="" />)
+                                  }
+                        
                         <button>Start a post</button>
                     </div>
                     <div>
@@ -33,7 +38,7 @@ const Main = (props) => {
                         <Article>
                             <SharedActor>
                                 <a>
-                                <img src="./images/user.svg" alt="" />
+                                  <img src="./images/user.svg" alt="" />
                                 <div>
                                     <span>Title</span>
                                     <span>Info</span>
@@ -183,6 +188,7 @@ paddinh-right=40px;
     img{
       width:48px;
       height:48px;
+      border-radius: 100px;
     }
     & > div{
       display:flex;
@@ -302,4 +308,12 @@ const Description = styled.div`
     }
   }
  `;
-export default Main
+
+ const mapStateToProps=(state)=>{
+   return{
+     user : state.userState.user
+   }
+ }
+//export default Main
+const mapDispatchToProps = (dispatch) => ({})
+export default connect(mapStateToProps,mapDispatchToProps)(Main);
